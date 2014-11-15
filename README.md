@@ -7,7 +7,7 @@ tbd
 
 Start of by installing the [Nancy.Serialization.NetJSON](https://www.nuget.org/packages/Serilog.Sinks.AzureApplicationInsights/) NuGet package:
 
-`PM> Install-Package Serilog.Sinks.AzureApplicationInsights`
+`PM> Install-Package Serilog.Sinks.AzureApplicationInsights -Pre`
 
 
 ## Thanks
