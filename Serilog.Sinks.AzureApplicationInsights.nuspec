@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Serilog.Sinks.AzureApplicationInsights</id>
+    <version>0.11.1-pre</version>
+    <authors>Joerg Battermann</authors>
+    <description>Serilog Sink that writes to the new Azure Portal based Microsoft Application Insights Service.</description>
+    <language>en-US</language>
+    <releaseNotes>
+      * 0.x Version(s) are built against the pre-release versions of Microsoft's AI packages and therefore considered pre-release themselves.
+    </releaseNotes>
+    <copyright>Joerg Battermann</copyright>
+    <licenseUrl>https://github.com/jbattermann/Serilog.Sinks.AzureApplicationInsights/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/jbattermann/Serilog.Sinks.AzureApplicationInsights</projectUrl>
+    <iconUrl>http://serilog.net/images/serilog-nuget.png</iconUrl>
+    <tags>serilog logging azure</tags>
+    <dependencies>
+      <dependency id="Serilog" />
+      <dependency id="Microsoft.ApplicationInsights" version="[0.11.1-build00694,]" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Serilog.Sinks.AzureApplicationInsights.dll" target="lib\net45" />
+    <file src="bin\Release\Serilog.Sinks.AzureApplicationInsights.xml" target="lib\net45" />
+    <file src="Serilog.Sinks.AzureApplicationInsights\**\*.cs" target="src" />
+  </files>
+</package>
