@@ -21,6 +21,7 @@
   </metadata>
   <files>
     <file src="Serilog.Sinks.AzureApplicationInsights\bin\Release\Serilog.Sinks.AzureApplicationInsights.dll" target="lib\net45" />
+    <file src="Serilog.Sinks.AzureApplicationInsights\bin\Release\Serilog.Sinks.AzureApplicationInsights.pdb" target="lib\net45" />
     <file src="Serilog.Sinks.AzureApplicationInsights\bin\Release\Serilog.Sinks.AzureApplicationInsights.xml" target="lib\net45" />
     <file src="Serilog.Sinks.AzureApplicationInsights\**\*.cs" target="src" />
   </files>
