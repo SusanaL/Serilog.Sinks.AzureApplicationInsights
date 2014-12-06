@@ -16,14 +16,9 @@ namespace Serilog.Sinks.AzureApplicationInsights
         private readonly IFormatProvider _formatProvider;
 
         /// <summary>
-        /// The Application Insights InstrumentationKey for your application.
-        /// </summary>
-        private string _instrumentationKey;
-
-        /// <summary>
         /// Holds the actual Application Insights TelemetryClient that will be used for logging.
         /// </summary>
-        private TelemetryClient _telemetryClient;
+        private readonly TelemetryClient _telemetryClient;
         
         /// <summary>
         /// Construct a sink that saves logs to the specified storage account.
@@ -36,11 +31,10 @@ namespace Serilog.Sinks.AzureApplicationInsights
             if (string.IsNullOrWhiteSpace(applicationInsightsInstrumentationKey)) throw new ArgumentOutOfRangeException("applicationInsightsInstrumentationKey", "Cannot be empty.");
 
             _formatProvider = formatProvider;
-            _instrumentationKey = applicationInsightsInstrumentationKey;
             _telemetryClient = new TelemetryClient();
 
-            if (string.IsNullOrWhiteSpace(_instrumentationKey) == false)
-                _telemetryClient.Context.InstrumentationKey = _instrumentationKey;
+            if (!string.IsNullOrWhiteSpace(applicationInsightsInstrumentationKey))
+                _telemetryClient.Context.InstrumentationKey = applicationInsightsInstrumentationKey;
         }
         
         #region Implementation of ILogEventSink
