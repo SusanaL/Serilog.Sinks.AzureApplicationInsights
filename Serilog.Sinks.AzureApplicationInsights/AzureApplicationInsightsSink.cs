@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Serilog.Core;
 using Serilog.Events;
@@ -45,42 +47,28 @@ namespace Serilog.Sinks.AzureApplicationInsights
         /// <param name="logEvent">The log event to write.</param>
         public void Emit(LogEvent logEvent)
         {
-            // writing logEvent as TraceTelemetry properties
-            var traceTelemetry = new TraceTelemetry(logEvent.RenderMessage(_formatProvider));
+            var renderedMessage = logEvent.RenderMessage(_formatProvider);
+            
+            // writing logEvent as corresponding ITelemetry instance
+            var telemetry = logEvent.Exception != null
+                ? (ITelemetry) new ExceptionTelemetry(logEvent.Exception)
+                : new TraceTelemetry(renderedMessage);
+
 
             // and forwaring properties and logEvent Data to the traceTelemetry's properties
-            var properties = traceTelemetry.Context.Properties;
-            properties.Add("Level", logEvent.Level.ToString());
-            properties.Add("TimeStamp", logEvent.Timestamp.ToString(CultureInfo.InvariantCulture));
-            properties.Add("MessageTemplate", logEvent.MessageTemplate.Text);
-
-            if (logEvent.Exception != null)
+            var properties = telemetry.Context.Properties;
+            properties.Add("LogLevel", logEvent.Level.ToString());
+            properties.Add("LogMessage", renderedMessage);
+            properties.Add("LogMessageTemplate", logEvent.MessageTemplate.Text);
+            properties.Add("LogTimeStamp", logEvent.Timestamp.ToString(CultureInfo.InvariantCulture));
+            
+            foreach (var property in logEvent.Properties.Where(property => property.Value != null && !properties.ContainsKey(property.Key)))
             {
-                properties.Add("Exception", logEvent.Exception.Message);
-
-                if (string.IsNullOrWhiteSpace(logEvent.Exception.Source) == false)
-                    properties.Add("ExceptionSource", logEvent.Exception.Source);
-
-                if (string.IsNullOrWhiteSpace(logEvent.Exception.StackTrace) == false)
-                    properties.Add("ExceptionStackTrace", logEvent.Exception.StackTrace);
-            }
-
-            foreach (var property in logEvent.Properties)
-            {
-                if (property.Value == null)
-                    continue;
-
-                if (properties.ContainsKey(property.Key) == false)
-                    properties.Add(property.Key, property.Value.ToString());
-                else
-                {
-                    // this isn't really elegant, but as as two property dictionaries are basically merged here, it's better to append rather than to overwrite/skip
-                    properties.Add(property.Key + " #2", property.Value.ToString());
-                }
+                properties.Add(property.Key, property.Value.ToString());
             }
 
             // an finally - this logs the message & its metadata to application insights
-            _telemetryClient.Track(traceTelemetry);
+            _telemetryClient.Track(telemetry);
         }
 
         #endregion
