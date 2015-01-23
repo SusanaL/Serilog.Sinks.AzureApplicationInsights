@@ -27,6 +27,7 @@ namespace Serilog.Sinks.AzureApplicationInsights
         /// </summary>
         /// <param name="applicationInsightsInstrumentationKey">The ID that determines the application component under which your data appears in Application Insights.</param>
         /// <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+        [Obsolete("This Sink is no longer supported - I moved its functionality over to the core serilog repository & 'Serilog.Sinks.ApplicationInsights' NuGet package. Use that one instead", true)]
         public ApplicationInsightsSink(string applicationInsightsInstrumentationKey, IFormatProvider formatProvider)
         {
             if (applicationInsightsInstrumentationKey == null) throw new ArgumentNullException("applicationInsightsInstrumentationKey");

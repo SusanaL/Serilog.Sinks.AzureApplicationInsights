@@ -21,6 +21,7 @@ namespace Serilog.Sinks.AzureApplicationInsights
         /// </returns>
         /// <exception cref="System.ArgumentNullException">loggerConfiguration</exception>
         /// <exception cref="ArgumentNullException">A required parameter is null.</exception>
+        [Obsolete("This Sink is no longer supported - I moved its functionality over to the core serilog repository & 'Serilog.Sinks.ApplicationInsights' NuGet package. Use that one instead", true)]
         public static LoggerConfiguration AzureApplicationInsights(
             this LoggerSinkConfiguration loggerConfiguration,
             string applicationInsightsInstrumentationKey,
