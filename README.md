@@ -1,6 +1,10 @@
 # IMPORTANT
 
-This repository and sink is no longer actively maintained as I've moved its functionality back over to the core [serilog](https://github.com/serilog/serilog/) repository. The NuGet Package (-pre release as of writing is): [Serilog.Sinks.ApplicationInsights](https://www.nuget.org/packages/Serilog.Sinks.ApplicationInsights/).
+This repository and sink is no longer actively maintained as I've moved its functionality back over to the core [serilog umbrella](https://github.com/serilog/), particularly [its own repository over there](https://github.com/serilog/serilog-sinks-applicationinsights).
+
+The NuGet Package, while it's a pre-release at the moment is now [Serilog.Sinks.ApplicationInsights](https://www.nuget.org/packages/Serilog.Sinks.ApplicationInsights/).
+
+*The following is for archiving purposes only*:
 
 
 ----------------------------------------------------------------------
