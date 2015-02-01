@@ -6,7 +6,7 @@
     <authors>Joerg Battermann</authors>
     <description>Serilog Sink that writes to the new Azure Portal based Microsoft Application Insights Service.</description>
     <language>en-US</language>
-    <releaseNotes>I M P O R T A N T: this package is NO longer supported and will be unlisted as I've migrated its functionality over to the core serilog 'Serilog.Sinks.ApplicationInsights' Package. Use that one instead</releaseNotes>
+    <releaseNotes>I M P O R T A N T: this package is NO longer supported and will be unlisted. I've migrated its functionality over to the core serilog 'Serilog.Sinks.ApplicationInsights' Package. Use that one instead.</releaseNotes>
     <copyright>Joerg Battermann</copyright>
     <licenseUrl>https://github.com/jbattermann/Serilog.Sinks.AzureApplicationInsights/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/jbattermann/Serilog.Sinks.AzureApplicationInsights</projectUrl>
