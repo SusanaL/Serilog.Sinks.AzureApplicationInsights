@@ -8,7 +8,7 @@ The NuGet Package, while it's a pre-release at the moment is now [Serilog.Sinks.
 
 
 ----------------------------------------------------------------------
-# Serilog.Sinks.AzureApplicationInsights [![NuGet Version](http://img.shields.io/nuget/v/Serilog.Sinks.AzureApplicationInsights.svg?style=flat)](https://www.nuget.org/packages/Serilog.Sinks.AzureApplicationInsights/) [![Build status](https://ci.appveyor.com/api/projects/status/drmactha5om0xpja)](https://ci.appveyor.com/project/jbattermann/serilog-sinks-azureapplicationinsights)
+# ~~Serilog.Sinks.AzureApplicationInsights~~ [![NuGet Version](http://img.shields.io/nuget/v/Serilog.Sinks.AzureApplicationInsights.svg?style=flat)](https://www.nuget.org/packages/Serilog.Sinks.AzureApplicationInsights/)
 
 Provides a [serilog sink](https://github.com/serilog/serilog/wiki/Provided-Sinks) that writes log messages to the new, [Microsoft Azure Portal integrated version of Application Insights](http://azure.microsoft.com/en-us/services/application-insights/).
 
